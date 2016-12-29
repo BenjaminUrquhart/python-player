@@ -3,12 +3,13 @@
 #######################################################
 # Python Music Player
 # By Benjamin Urquhart
-# benjamin@ericsart.com
 # VERSION: 2.4
 
 This player is designed to play music on a Raspberry Pi,
 but can be used on Windows and OSX.
 OSX support is limited.
+
+Don't expect good documentation for a little while.
 #######################################################
 """
 version = '2.4'
@@ -348,6 +349,7 @@ except:
     bcast("Failed to create log")
 ######################################################
 # Checking for updates...
+""" Yep, that's an IP address"""
 url = "50.177.194.52:8080"
 update = 0
 try:
