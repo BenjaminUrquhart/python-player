@@ -3,7 +3,7 @@
 #######################################################
 # Python Music Player
 # By Benjamin Urquhart
-# VERSION: 2.4
+# VERSION: 2.4.1
 
 This player is designed to play music on a Raspberry Pi,
 but can be used on Windows and OSX.
@@ -13,7 +13,7 @@ Don't expect good documentation for a little while.
 #######################################################
 """
 version = '2.4'
-revision = '0'
+revision = '1'
 ######################################################
 import datetime
 import urllib
@@ -52,35 +52,6 @@ console = False
 text = ''
 songNum = 1
 kill = False
-######################################################
-try:
-    if len(sys.argv) > 1:
-        i = 1
-        while i < len(sys.argv):
-            arg = sys.argv[i]
-            if arg == "--console":
-		console = True
-	    elif arg == "-v":
-                debug = True
-	    elif arg == "-c":
-		console = True
-	    elif arg == "--verbose":
-		debug = True
-	    elif arg == "-h" or arg == "--help":
-		print 'Plays music in the "Music" folder within the current directory\n'
-		print "Usage: " + sys.argv[0] + " [options]"
-		print "Options: "
-		print "\t -h, --help\t Displays this help text"
-		print "\t -v, --verbose\t Displays extra information"
-		print "\t -c, --console\t Disables Pygame screen (text-only)"
-                kill = True
-	    else:
-                print 'Ignoring bad option: ' + arg
-            i = i + 1
-except:
-    pass
-if kill:
-    exit()
 ######################################################
 #                                                    ############
 print "Starting Python Music Player " + version + "." + revision #
@@ -307,12 +278,20 @@ def control2():
                 if event.key == pygame.K_F12:
                     bcast("Skip")
                     pygame.mixer.music.stop()
-                if event.key == pygame.K_F10:
+                if event.key == pygame.K_F10 or event.key == pygame.K_q:
                     bcast("Quit")
                     shutdown()
     except:
         LogErr()
     sleep(0.2)
+######################################################
+mkdir('logs')
+time = datetime.datetime.now()
+try:
+    log_file = open("./logs/" + str(time), "w+")
+except:
+    LogErr()
+    bcast("Failed to create log")
 ######################################################
 """
 def text_objects(text, font):
@@ -339,50 +318,6 @@ def display(text, background, screen):
     pygame.display.flip()
 ######################################################
 #server()
-######################################################
-mkdir('logs')
-time = datetime.datetime.now()
-try:
-    log_file = open("./logs/" + str(time), "w+")
-except:
-    LogErr()
-    bcast("Failed to create log")
-######################################################
-# Checking for updates...
-""" Yep, that's an IP address"""
-url = "50.177.194.52:8080"
-update = 0
-try:
-    log('Checking for updates...')
-    log('Getting info from ' + url)
-    ver = urllib2.urlopen('http://' + url + '/version.txt')
-    rev = urllib2.urlopen('http://' + url + '/rev.txt')
-    ver = ver.read()
-    rev = rev.read()
-    if float(ver) > float(version):
-        log('Update found!')
-        bcast("Python Music Player " + ver + " is availible")
-        bcast("Type update at the prompt to download")
-        update = 1
-    elif float(ver) < float(version):
-        log('Indev vesion in use')
-        bcast('Indev version in use')
-    elif int(rev) > int(revision) and float(ver) == float(version):
-        log('New revision found!')
-        bcast('Revision ' + str(rev) + ' is availible')
-        bcast('Type update at the prompt to download')
-        update = 1
-    elif float(ver) == float(version):
-        log('No update found')
-        bcast('No update found')
-except:
-    bcast('Failed to check for updates', True)
-    LogErr()
-    log('Update check failed')
-######################################################
-mkdir('Music')
-log("Player starting...")
-news()
 ######################################################
 # Looking for pygame...
 try:
@@ -427,6 +362,7 @@ except ImportError:
 # Load pygame module
 try:
     pygame.init()
+    pygame.mixer.init()
     #pygame.font.init()
     log('Pygame initialized')
 except:
@@ -434,6 +370,81 @@ except:
     log("pygame.init() failed")
     LogErr()
 #######################################################
+try:
+    if len(sys.argv) > 1:
+        i = 1
+        while i < len(sys.argv):
+            arg = sys.argv[i]
+            if arg == "--console" or arg == "-c":
+		console = True
+	    elif arg == "--verbose" or arg == "-v":
+		debug = True
+	    elif arg == "-f" or arg == "--file":
+                pygame.init()
+                try:
+                    pygame.mixer.music.load(sys.argv[i+1])
+                    print "Now Playing: " + sys.argv[i+1]
+                    pygame.mixer.music.play()
+                    while pygame.mixer.music.get_busy():
+                        continue
+                    kill = True
+                except:
+                    LogErr()
+                    print "There was an error playing the file"
+                    kill = True
+	    elif arg == "-h" or arg == "--help":
+		print 'Plays music in the "Music" folder within the current directory\n'
+		print "Usage: " + sys.argv[0] + " [-hvc] [-f <filepath>]"
+		print "Options: "
+		print "\t -h, --help\t Displays this help text"
+		print "\t -v, --verbose\t Displays extra information"
+		print "\t -c, --console\t Disables Pygame screen (text-only mode)"
+		print "\t -f, --file\t Plays the file at the filepath specified"
+		print "\nExamples: \n\t " + sys.argv[0] + " -v -c -f /sample/file/path/foo.bar"
+		print "\t " + sys.argv[0] + " -f foo.bar"
+                kill = True
+            i = i + 1
+except:
+    pass
+if kill:
+    exit()
+######################################################
+# Checking for updates...
+""" Yep, that's an IP address"""
+url = "73.159.168.4"
+update = 0
+try:
+    log('Checking for updates...')
+    log('Getting info from ' + url)
+    ver = urllib2.urlopen('http://' + url + '/version.txt')
+    rev = urllib2.urlopen('http://' + url + '/rev.txt')
+    ver = ver.read()
+    rev = rev.read()
+    if float(ver) > float(version):
+        log('Update found!')
+        bcast("Python Music Player " + ver + " is availible")
+        bcast("Type update at the prompt to download")
+        update = 1
+    elif float(ver) < float(version):
+        log('Indev vesion in use')
+        bcast('Indev version in use')
+    elif int(rev) > int(revision) and float(ver) == float(version):
+        log('New revision found!')
+        bcast('Revision ' + str(rev) + ' is availible')
+        bcast('Type update at the prompt to download')
+        update = 1
+    elif float(ver) == float(version):
+        log('No update found')
+        bcast('No update found')
+except:
+    bcast('Failed to check for updates', True)
+    LogErr()
+    log('Update check failed')
+######################################################
+mkdir('Music')
+log("Player starting...")
+news()
+######################################################
 try:
     if console == False:
         screen = pygame.display.set_mode((1000, 200))
@@ -475,6 +486,7 @@ try:
             bcast("Now Playing: " + current + " (" + str(songNum) + " out of " + str(amount) + ")")
             log("Song " + str(songNum) + " out of " + str(amount))
             try:
+                log("Loading '" + current + "'")
                 pygame.mixer.music.load("./Music/" + current)
                 log('Now Playing: ' + current)
             except:
@@ -485,12 +497,12 @@ try:
 # Take user input for controlling player
             while pygame.mixer.music.get_busy():
                 if console == False:
-                    font = pygame.font.Font(None, 36)
-                    out = font.render(text, 1, (10, 10, 10))
-                    textpos = out.get_rect()
-                    textpos.centerx = background.get_rect().centerx
+                    #font = pygame.font.Font(None, 36)
+                    #out = font.render(text, 1, (10, 10, 10))
+                    #textpos = out.get_rect()
+                    ##textpos.centerx = background.get_rect().centerx
                     screen.blit(background, (0, 0))
-                    pygame.display.flip()
+                    #pygame.display.flip()
                     control2()
                 else:
                     t = Process(None, control())
