@@ -7,8 +7,10 @@ To start the player, run the following commands:
 
 Linux:
 `git clone https://github.com/creepersbane/python-player`
+
 `cd python-player`
 `./player.py`
+
 
 Windows:
 1. Clone the repository
