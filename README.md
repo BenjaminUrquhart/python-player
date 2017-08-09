@@ -6,6 +6,7 @@ There is no install (the horror!)
 To start the player, run the following commands:
 
 Linux:
+
 `git clone https://github.com/creepersbane/python-player`
 
 `cd python-player`
