@@ -19,4 +19,4 @@ Windows:
 2. In a terminal, go to the "python-player" directory
 3. Run `python player.py`
 
-Mac: Coming soon
+Mac: Coming soon (Why couldn't life be easy...)
