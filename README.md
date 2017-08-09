@@ -9,6 +9,7 @@ Linux:
 `git clone https://github.com/creepersbane/python-player`
 
 `cd python-player`
+
 `./player.py`
 
 
