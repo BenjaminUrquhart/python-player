@@ -5,7 +5,9 @@ A small music player coded in the python programming language
 
 Plays music in the "Music" folder within the current directory
 
-Usage: player.py [-hvc] [-f <filepath>]
+Usage: 
+
+player.py [-hvc] [-f <filepath>]
 
 Options: 
 
