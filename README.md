@@ -7,7 +7,7 @@ Plays music in the "Music" folder within the current directory
 
 Usage: 
 
-player.py [-hvc] [-f <filepath>]
+`player.py [-hvc] [-f <filepath>]`
 
 Options: 
 
