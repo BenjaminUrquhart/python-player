@@ -1,6 +1,17 @@
 # Python Music Player
 A small music player coded in the python programming language
 
+#Usage
+Plays music in the "Music" folder within the current directory
+Usage: player.py [-hvc] [-f <filepath>]
+Options: 
+          -h, --help:   Displays this help text
+          -v, --verbose Displays extra information
+          -c, --console Disables Pygame screen (text-only mode)
+          -f, --file    Plays the file at the filepath specified
+Examples: player.py -c -v -f /file/path/foo.bar
+          player.py -f foo.bar
+          
 # How to install
 There is no install (the horror!)
 To start the player, run the following commands:
