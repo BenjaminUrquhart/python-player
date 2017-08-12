@@ -17,7 +17,9 @@ Options:
           
           -f, --file    Plays the file at the filepath specified
           
-Examples: player.py -c -v -f /file/path/foo.bar
+Examples: 
+
+          player.py -c -v -f /file/path/foo.bar
 
           player.py -f foo.bar
           
