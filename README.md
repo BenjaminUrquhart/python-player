@@ -1,7 +1,8 @@
 # Python Music Player
 A small music player coded in the python programming language
 
-#Usage
+# Usage
+
 Plays music in the "Music" folder within the current directory
 
 Usage: player.py [-hvc] [-f <filepath>]
