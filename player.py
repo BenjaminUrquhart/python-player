@@ -13,7 +13,7 @@ Don't expect good documentation for a little while.
 #######################################################
 """
 version = '2.4'
-revision = '1'
+revision = '2'
 ######################################################
 import datetime
 import urllib
@@ -410,8 +410,7 @@ if kill:
     exit()
 ######################################################
 # Checking for updates...
-""" Yep, that's an IP address"""
-url = "73.159.168.4"
+url = "benjaminurquhart.dynu.net"
 update = 0
 try:
     log('Checking for updates...')
