@@ -1,6 +1,12 @@
 # Python Music Player
 A small music player coded in the python programming language
 
+# Dependencies
+
+- Pygame (http://pygame.org; can be installe with pip)
+- AppJar (http://appjar.info; can also be installed with pip)
+
+
 # Usage
 
 Plays music in the "Music" folder within the current directory
