@@ -3,8 +3,8 @@ A small music player coded in the python programming language
 
 # Dependencies
 
-- Pygame (http://pygame.org)
-- AppJar (http://appjar.info)
+- Pygame (http://pygame.org) - Required
+- AppJar (http://appjar.info) - Required for GUI to work
 
 
 # Usage
