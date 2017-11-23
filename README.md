@@ -1,5 +1,7 @@
 Believe me, I am working on everything...
 
+ISSUES WERE ENCOUNTERED WITH SUBPROCESS. IF SOMEONE COULD HELP ME I WOULD APPRICIATE IT.
+
 # Python Music Player
 A small music player coded in the python programming language
 
