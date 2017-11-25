@@ -1,6 +1,6 @@
 Believe me, I am working on everything...
 
-ISSUES WERE ENCOUNTERED WITH SUBPROCESS. IF SOMEONE COULD HELP ME I WOULD APPRICIATE IT.
+I am 99.99% done with release 2.5.
 
 # Python Music Player
 A small music player coded in the python programming language
