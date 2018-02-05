@@ -13,7 +13,7 @@ Don't expect good documentation for a little while.
 #######################################################
 """
 version = '2.4'
-revision = '2'
+revision = '3'
 ######################################################
 import datetime
 import urllib
@@ -410,7 +410,7 @@ if kill:
     exit()
 ######################################################
 # Checking for updates...
-url = "benjaminurquhart.dynu.net"
+url = "4hmediaproductions.com"
 update = 0
 try:
     log('Checking for updates...')
