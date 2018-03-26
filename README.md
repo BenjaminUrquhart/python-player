@@ -1,5 +1,4 @@
 Python Music Player is no longer under active development. Release 2.5 will come out soon as-is with no guarentees
-Believe me, I am working on everything...
 
 I am 99.99% done with release 2.5.
 
