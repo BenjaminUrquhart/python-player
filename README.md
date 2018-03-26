@@ -54,4 +54,8 @@ Windows:
 2. In a terminal, go to the "python-player" directory
 3. Run `python player.py`
 
-Mac: Coming soon (Why couldn't life be easy...)
+Mac:
+1. Download the .zip file from https://github.com/BenjaminUrquhart/python-player/archive/master.zip
+2. Extract the zip
+3. In a terminal, go to (download location)/python-player-master
+4. Run `python player.py`
