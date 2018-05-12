@@ -1,6 +1,4 @@
-Python Music Player is no longer under active development. Release 2.5 will come out soon as-is with no guarentees
-
-I am 99.99% done with release 2.5.
+I should have used a Gist for this project. Oh well.
 
 # Python Music Player
 A small music player coded in the python programming language
