@@ -15,7 +15,7 @@ Plays music in the "Music" folder within the current directory
 
 Usage: 
 
-          `player.py [-hvc] [-f <filepath>]`
+          player.py [-hvc] [-f <filepath>]
 
 Options: 
 
@@ -32,6 +32,8 @@ Examples:
           player.py -c -v -f /file/path/foo.bar
 
           player.py -f foo.bar
+          
+          player.py (this will play music from the ./Music directory)
           
 # How to install
 There is no install (the horror!)
