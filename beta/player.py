@@ -37,7 +37,7 @@ console = False
 text = ""
 songNum = 1
 app = None
-url = "https://benjaminurquhart.dynu.net"
+url = "https://4hmediaproductions.com"
 #######################################################
 log_cache.append("Importing sys...")
 # In order to parse arguments, we need to import the sys module early
